@@ -129,11 +129,11 @@ def testD():
     # Test case 2
     assert(True == iscurrency('XAF'))    #XAF是有效的输入值
     # Test case 3
-    assert(0.19152569254984 == exchange('TZS', 'ISK', 4.0))
+    assert(0.19152569254984 == exchange('TZS', 'ISK', 4.0))    #将4.0TZS兑换为ISK
     # Test case 4
-    assert(1979.6672442812 == exchange('ILS', 'IQD', 6.0))
+    assert(1979.6672442812 == exchange('ILS', 'IQD', 6.0))    #将6.0ILS兑换为IQD
     # Test case 5
-    assert(3.6969751452572 == exchange('CAD', 'CHF', 5.0))
+    assert(3.6969751452572 == exchange('CAD', 'CHF', 5.0))    #将5.0CAD兑换为CHF
 
 
 def testAll():
