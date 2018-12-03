@@ -55,7 +55,8 @@ def currency_response(currency_from, currency_to, amount_from):
     old-amount and new-amount will be empty, while "success" will be followed \
     by the value false.
     """
-    website = 'http://cs1110.cs.cornell.edu/2016fa/a1server.php?from=' + currency_from + '&to=' + currency_to + '&amt=' + str(amount_from)
+    website = 'http://cs1110.cs.cornell.edu/2016fa/a1server.php?from=' \
+              + currency_from + '&to=' + currency_to + '&amt=' + str(amount_from)
     doc = urlopen(website)
     docstr = doc.read()
     doc.close()
@@ -103,7 +104,7 @@ def testB():
                              "error":"Source currency code is invalid."}'))
     # Test case 2
     assert('1.825936 Euros' == go_to('{"from":"2 United States Dollars", \
-                                      "to":"1.825936 Euros","success":true,"error":""}'))
+                                     "to":"1.825936 Euros","success":true,"error":""}'))
 
 
 def testC():
