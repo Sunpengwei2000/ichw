@@ -55,8 +55,7 @@ def currency_response(currency_from, currency_to, amount_from):
     old-amount and new-amount will be empty, while "success" will be followed \
     by the value false.
     """
-    website = 'http://cs1110.cs.cornell.edu/2016fa/a1server.php?from=' \
-              + currency_from + '&to=' + currency_to + '&amt=' + str(amount_from)
+    website = 'http://cs1110.cs.cornell.edu/2016fa/a1server.php?from=' + currency_from + '&to=' + currency_to + '&amt=' + str(amount_from)
     doc = urlopen(website)
     docstr = doc.read()
     doc.close()
