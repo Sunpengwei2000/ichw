@@ -138,7 +138,7 @@ def main():
     if wb.isdigit() != True:
         print('Your wb is invalid. Please enter a integer.')
     # 判断墙是否比砖大
-    elif int(lw) * int(ww) <= int(lb) * int(wb): 
+    elif int(lw) * int(ww) < int(lb) * int(wb): 
         print('Your brick is bigger than the wall!')
     # 判断墙是否能被砖铺满
     elif (int(lw) * int(ww)) % (int(lb) * int(wb)) != 0:
