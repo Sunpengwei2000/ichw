@@ -25,9 +25,9 @@ def pave(cell, l_w, w_w, l_b, w_b, result1):
         brick = cell.index(0)
         [x,y] = [brick // l_w , brick % l_w]
         # 横铺
-        empty_y = cell[brick:((x+1)*l_w)].count(0)
+        empty_y = cell[brick:((x + 1) * l_w)].count(0)
         if empty_y >= l_b and (w_w - x) >= w_b:
-            b = [(l_w*j + k) for j in range(x,x+w_b) for k in range(y,y+l_b)]  # 包括了所有砖的位置
+            b = [(l_w * j + k) for j in range(x, x + w_b) for k in range(y, y + l_b)]  # 包括了所有砖的位置
             a = tuple(b)
             result1.append(a)
             for i in b:
@@ -38,7 +38,7 @@ def pave(cell, l_w, w_w, l_b, w_b, result1):
                 cell[i] = 0  # 通过改变cell的状态来表示将砖拆下来
         # 竖铺
         if (w_w - x) >= l_b and (l_w - y) >= w_b:
-            d = [l_w*j + k for j in range(x,x+l_b) for k in range(y,y+w_b)]
+            d = [l_w * j + k for j in range(x, x + l_b) for k in range(y, y + w_b)]
             c = tuple(d)
             result1.append(c)
             for i in d:
@@ -58,18 +58,18 @@ def draw_background(lenth,width):
     a.speed(0)
     a.goto(-100, 100)
     # 绘制表格中的横线
-    for i in range(width+1):
-        a.goto(-100, 100-30*i)
+    for i in range(width + 1):
+        a.goto(-100, 100 - 30 * i)
         a.down()
-        a.forward(30*lenth)
+        a.forward(30 * lenth)
         a.up()
     a.goto(-100, 100)
     a.right(90)
     # 绘制表格中的竖线
-    for i in range(lenth+1):
-        a.goto(-100+30*i,100)
+    for i in range(lenth + 1):
+        a.goto(-100 + 30 * i, 100)
         a.down()
-        a.forward(30*width)
+        a.forward(30 * width)
         a.up()
     a.hideturtle()
 
@@ -79,44 +79,44 @@ def draw_number(lw, ww):
     a = turtle.Turtle()
     a.up()
     a.color('blue')
-    for i in range(0,ww):
-        a.goto(-115,77-30*i)
-        for j in range(0,lw):
+    for i in range(0, ww):
+        a.goto(-115, 77 - 30 * i)
+        for j in range(0, lw):
             a.forward(30)
-            a.write(j+lw*i)
+            a.write(j + lw * i)
     a.hideturtle()
 
 
-def draw_brick(brick,lb,wb,lw):
+def draw_brick(brick, lb, wb, lw):
     '''draw each brick paved on the wall'''
     place = brick[0]
-    (x,y) = (place//lw,place%lw)
+    (x, y) = (place // lw,place % lw)
     a = turtle.Turtle()
     a.shape('circle')
     a.pensize(3)
     a.up()
     a.speed(0)
-    a.goto(-100+30*y, 100-30*x)
+    a.goto(-100 + 30 * y, 100 - 30 * x)
     a.down()
     # 横铺的砖
     if (brick[0] + lb - 1) in brick:
-        a.forward(30*lb)
+        a.forward(30 * lb)
         a.right(90)
-        a.forward(30*wb)
+        a.forward(30 * wb)
         a.right(90)
-        a.forward(30*lb)
+        a.forward(30 * lb)
         a.right(90)
-        a.forward(30*wb)
+        a.forward(30 * wb)
         a.right(90)
     # 竖铺的砖
     else:
-        a.forward(30*wb)
+        a.forward(30 * wb)
         a.right(90)
-        a.forward(30*lb)
+        a.forward(30 * lb)
         a.right(90)
-        a.forward(30*wb)
+        a.forward(30 * wb)
         a.right(90)
-        a.forward(30*lb)
+        a.forward(30 * lb)
         a.right(90)
     a.hideturtle()
 
@@ -146,21 +146,21 @@ def main():
     else:
         l_w = int(lw)
         w_w = int(ww)
-        l_b = max(int(lb),int(wb))      
-        w_b = min(int(lb),int(wb))
-        cell = [0]*l_w*w_w
+        l_b = max(int(lb), int(wb))      
+        w_b = min(int(lb), int(wb))
+        cell = [0] * l_w * w_w
         result1 = []
         pave(cell, l_w, w_w, l_b, w_b, result1)
         for i in result:
             print(i)
         # 绘制背景表格
-        num = turtle.numinput('Select Plan','please choose the serial number of the path',
-                              default = 0 ,minval = 0,maxval = len(result) - 1)
-        draw_background(l_w,w_w)
-        draw_number(l_w,w_w)
+        num = turtle.numinput('Select Plan', 'please choose the serial number of the path',
+                              default = 0, minval = 0, maxval = len(result) - 1)
+        draw_background(l_w, w_w)
+        draw_number(l_w, w_w)
         # 绘制砖的铺法
         for i in result[int(num)]:
-            draw_brick(i,l_b,w_b,l_w)
+            draw_brick(i, l_b, w_b, l_w)
         turtle.done()
 
 if __name__ == '__main__':
