@@ -19,14 +19,13 @@ def pave(cell, l_w, w_w, l_b, w_b, result1):
             pass
         else:
             result.append(sorted(result1))
-        return result
+        pass
     # 墙未被铺满
     else:
         brick = cell.index(0)
         [x,y] = [brick // l_w , brick % l_w]
         # 横铺
-        empty_y = cell[brick:((x + 1) * l_w)].count(0)
-        if empty_y >= l_b and (w_w - x) >= w_b:
+        if cell[brick:brick + l_b] == [0] * l_b and l_w - y >= l_b and (w_w - x) >= w_b:
             b = [(l_w * j + k) for j in range(x, x + w_b) for k in range(y, y + l_b)]  # 包括了所有砖的位置
             a = tuple(b)
             result1.append(a)
@@ -47,6 +46,7 @@ def pave(cell, l_w, w_w, l_b, w_b, result1):
             del result1[-1]
             for i in d:
                 cell[i] = 0  # 通过改变cell的状态来表示将砖拆下来
+    return result
 
 
 def draw_background(lenth,width):
