@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Foobar.py: Description of what foobar does.
+"""tile.py: Give the paving method with a wall and a brick.
 
 __author__ = "Sunpengwei"
 __pkuid__  = "1800011718"
@@ -122,7 +122,7 @@ def draw_brick(brick, lb, wb, lw):
 
 
 def main():
-    '''main module: to judge if the input is valid'''
+    '''main module: to judge if the input is valid and give the paving method'''
     lw = input('please enter the lenth of the wall')
     ww = input('please enter the width of the wall')
     lb = input('please enter the lenth of the brick')
