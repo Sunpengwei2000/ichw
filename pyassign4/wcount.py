@@ -19,7 +19,7 @@ def wcount(text, topn=10):
     dic = {}
     cache = re.split('[ \n]',text.lower())  # 将整段文章分割成单词，分割标志为空格和换行
     word_list = []
-    valid_letter = "abcdefghijklmnopqrstuvwxyz'-"  # 单词中会含有字母和缩写“'”、连字符“-”
+    valid_letter = "abcdefghijklmnopqrstuvwxyz'"  # 单词中会含有字母和缩写“'”
     for element in cache:
         if element.isalpha():
             word_list.append(element)  #保留单词
@@ -31,7 +31,6 @@ def wcount(text, topn=10):
                 if letter in valid_letter:
                     new_element = new_element + letter  #去除字符中除“'”以外的标点
                     new_element = new_element.strip("'")  #去除首尾的“'”
-                    new_element = new_element.strip("-")  #去除首尾的“-”
             word_list.append(new_element)
     for word in word_list:
         if word == '':
@@ -65,11 +64,13 @@ def main():
         try :
             topn = int(sys.argv[2])
             if topn <= 0:
-                print("Please input a positive number.")  # 检验topn是否为正数
+                print("Please input a positive number.")  # 检验输入的topn是否为正数
             else:
                 wcount(jstr, topn)
         except IndexError as err:
             wcount(jstr)  #用户没有给定输出的数量，按默认值topn = 10输出
+        except ValueError as err:
+            print("Please input a number")  #检验输入的topn是否为数字
 
 
 if __name__ == '__main__':
