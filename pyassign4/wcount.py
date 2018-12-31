@@ -19,7 +19,7 @@ def wcount(text, topn=10):
     dic = {}
     cache = re.split('[ \n]',text.lower())  # 将整段文章分割成单词，分割标志为空格和换行
     word_list = []
-    valid_letter = "abcdefghijklmnopqrstuvwxyz'"  # 单词中会含有字母和缩写“'”
+    valid_letter = "abcdefghijklmnopqrstuvwxyz'-"  # 单词中会含有字母和缩写“'”、连字符“-”
     for element in cache:
         if element.isalpha():
             word_list.append(element)  #保留单词
@@ -31,6 +31,7 @@ def wcount(text, topn=10):
                 if letter in valid_letter:
                     new_element = new_element + letter  #去除字符中除“'”以外的标点
                     new_element = new_element.strip("'")  #去除首尾的“'”
+                    new_element = new_element.strip("-")  #去除首尾的“-”
             word_list.append(new_element)
     for word in word_list:
         if word == '':
